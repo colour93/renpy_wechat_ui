@@ -859,6 +859,39 @@ init -2 python:
         return store.wechat_state.reveal_next(session.session_id)
 
 
+    def wc_overlay_reveal_next(session_ref=None):
+        if session_ref is None:
+            session_ref = getattr(store, "wechat_overlay_session_ref", None)
+
+        if session_ref is None:
+            return None
+
+        revealed_entry = wc_reveal_next(session_ref)
+
+        if revealed_entry is not None:
+            try:
+                renpy.restart_interaction()
+            except Exception:
+                pass
+
+        return revealed_entry
+
+
+    def wc_hide_chat_overlay():
+        overlay_session_ref = getattr(store, "wechat_overlay_session_ref", None)
+
+        if overlay_session_ref is not None:
+            wc_close_session(overlay_session_ref)
+            store.wechat_overlay_session_ref = None
+
+        renpy.hide_screen("wechat_chat_overlay")
+
+        try:
+            renpy.restart_interaction()
+        except Exception:
+            pass
+
+
     def wc_push_toast(message, duration=2.2):
         toast = WeChatToast(message, duration=duration)
         store.wechat_toast = toast

@@ -2,6 +2,7 @@ default wechat_state = WeChatState()
 default wechat_toast = None
 default wechat_overlay_session_ref = None
 default wechat_current_time = None
+default wechat_overlay_hide_window_when_idle = False
 
 
 label wechat_home(inbox_items=None):
@@ -29,18 +30,33 @@ label .wechat_session_loop:
     return
 
 
-label wechat_show_chat(session_ref):
+label wechat_show_chat(session_ref, hide_window_when_idle=True):
     $ _wechat_overlay_session = wc_open_session(session_ref)
     $ wechat_overlay_session_ref = _wechat_overlay_session
+    $ wechat_overlay_hide_window_when_idle = hide_window_when_idle
     show screen wechat_chat_overlay(session=_wechat_overlay_session)
+    with None
+
+    if wechat_overlay_hide_window_when_idle:
+        window hide
+        with config.window_hide_transition
+
     return
 
 
 label wechat_hide_chat():
-    if wechat_overlay_session_ref is not None:
-        $ wc_close_session(wechat_overlay_session_ref)
-        $ wechat_overlay_session_ref = None
-    hide screen wechat_chat_overlay
+    $ wechat_overlay_hide_window_when_idle = False
+    $ wc_hide_chat_overlay()
+    return
+
+
+label wechat_overlay_reveal_next(session_ref=None, wait_for_click=True):
+    if wait_for_click:
+        if wechat_overlay_hide_window_when_idle:
+            window hide
+            with config.window_hide_transition
+        pause
+    $ wc_overlay_reveal_next(session_ref=session_ref)
     return
 
 
