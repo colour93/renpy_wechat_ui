@@ -1,3 +1,6 @@
+# Copyright (c) 2026 colour93
+# SPDX-License-Identifier: MIT
+
 style wechat_home_header is default
 style wechat_home_body is default
 style wechat_home_title is wechat_text_base

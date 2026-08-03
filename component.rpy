@@ -1,3 +1,6 @@
+# Copyright (c) 2026 colour93
+# SPDX-License-Identifier: MIT
+
 screen wechat_phone_shell():
     $ metrics = wc_phone_metrics()
 

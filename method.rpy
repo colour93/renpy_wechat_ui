@@ -1,3 +1,6 @@
+# Copyright (c) 2026 colour93
+# SPDX-License-Identifier: MIT
+
 default wechat_state = WeChatState()
 default wechat_toast = None
 default wechat_overlay_session_ref = None

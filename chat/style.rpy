@@ -1,3 +1,6 @@
+# Copyright (c) 2026 colour93
+# SPDX-License-Identifier: MIT
+
 style wechat_header is default
 style wechat_body is default
 style wechat_message_list is vbox

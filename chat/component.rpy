@@ -1,3 +1,6 @@
+# Copyright (c) 2026 colour93
+# SPDX-License-Identifier: MIT
+
 screen wechat_chat(session):
     modal False
     zorder 90

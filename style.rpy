@@ -1,3 +1,6 @@
+# Copyright (c) 2026 colour93
+# SPDX-License-Identifier: MIT
+
 style wechat_device_outer is default
 style wechat_device_bezel is default
 style wechat_device_screen is default

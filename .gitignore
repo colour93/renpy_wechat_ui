@@ -1,6 +1,28 @@
+# macOS and editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Ren'Py and Python generated files
+__pycache__/
+*.py[cod]
 *.rpyc
 *.rpymc
 
+# Temporary and local files
 *.bak
 *.new
 *.old
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+
+# Packaging output
+build/
+dist/
+*.egg-info/

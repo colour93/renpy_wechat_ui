@@ -2,6 +2,8 @@
 
 一个可直接放进 Ren'Py 项目的微信风格聊天 UI。
 
+这是一个非官方、独立开发的界面项目，与腾讯或微信不存在隶属、授权或合作关系。
+
 目前已经按职责拆分成多个 `.rpy` 文件，方便继续扩展首页、聊天页和后续的朋友圈模块。
 
 ## 安装
@@ -51,6 +53,16 @@ $ lao_ma = WeChatContact(
     avatar_image="images/avatar/lao_ma.png",
 )
 ```
+
+### 3. 正式使用前删除示例
+
+`example/congcong_ch1.rpy` 只用于展示完整调用流程。Ren'Py 会自动加载项目 `game/` 下的所有 `.rpy` 文件，因此复制完需要的示例代码后，建议从正式项目中删除整个 `example/` 目录：
+
+```text
+game/wechat_ui/example/
+```
+
+否则示例 label 和数据也会参与编译，并可能和项目自己的名称产生冲突。
 
 ## 目录结构
 
@@ -250,3 +262,9 @@ call wechat_show_chat("chat.ka_nuo", hide_window_when_idle=False)
 
 - 如果要加朋友圈，可以继续把 `moment/component.rpy` 和 `moment/style.rpy` 按同样结构补齐。
 - 如果要扩展消息类型，优先从 `WeChatEntry`、`wc_render_entries()` 和 `wechat_message_body` 一起改。
+
+## License
+
+项目代码使用 [MIT License](LICENSE)，允许商业使用、修改和再发布，但必须保留版权与许可证声明。
+
+仓库不包含字体、头像或微信官方素材。你在项目中配置的字体、图片和其他资源不属于本项目的 MIT 授权范围，请自行确认其使用许可。微信及 WeChat 名称和商标归其权利人所有，详见 [NOTICE.md](NOTICE.md)。
